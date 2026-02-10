@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine 💘</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  img.main-gif {
+    height: 200px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  button {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  .yes {
+    background: #22c55e;
+  }
+
+  .no {
+    background: #ef4444;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .success-text {
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+
+  .floating-gif {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp 8s linear forwards;
+    opacity: 0.9;
+  }
+
+  @keyframes floatUp {
+    from {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    to {
+      transform: translateY(-120vh) scale(1.4);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+  <img class="main-gif"
+       src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif">
+  <h1>Will you be my Valentine?</h1>
+
+  <div class="buttons">
+    <button class="yes" id="yesBtn">Yes</button>
+    <button class="no" id="noBtn">No</button>
+  </div>
+</div>
+
+<div class="container hidden" id="success">
+  <img class="main-gif"
+       src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif">
+  <div class="success-text">
+    WOOOOOO!!! I love you pookie!! ;))
+  </div>
+</div>
+
+<script>
+  let noCount = 0;
+
+  const phrases = [
+    "No",
+    "Are you sure?",
+    "What if I asked really nicely?",
+    "Pretty please",
+    "With a chocolate rice cake on top",
+    "What about a matcha frostie",
+    "PLEASE POOKIE",
+    "But :*(",
+    "I am going to die",
+    "Yep im dead",
+    "ok ur talking to nathan's ghost",
+    "please babe",
+    ":((((",
+    "PRETTY PLEASE",
+    "Estoy muerto",
+    "No :("
+  ];
+
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const main = document.getElementById("main");
+  const success = document.getElementById("success");
+
+  yesBtn.addEventListener("click", () => {
+    main.classList.add("hidden");
+    success.classList.remove("hidden");
+  });
+
+  noBtn.addEventListener("click", () => {
+    noCount++;
+
+    const newSize = noCount * 18 + 16;
+    yesBtn.style.fontSize = newSize + "px";
+
+    noBtn.textContent = phrases[Math.min(noCount, phrases.length - 1)];
+  });
+
+  const floatingGifs = [
+    "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif",
+    "https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif",
+    "https://media.tenor.com/qJ5evVs-_uUAAAAi/love-heart.gif"
+  ];
+
+  function spawnGif() {
+    const gif = document.createElement("img");
+    gif.src = floatingGifs[Math.floor(Math.random() * floatingGifs.length)];
+    gif.className = "floating-gif";
+
+    gif.style.left = Math.random() * 100 + "vw";
+    gif.style.bottom = "-100px";
+    gif.style.width = 50 + Math.random() * 50 + "px";
+
+    document.body.appendChild(gif);
+    setTimeout(() => gif.remove(), 8000);
+  }
+
+  setInterval(spawnGif, 900);
+</script>
+
+</body>
+</html>
