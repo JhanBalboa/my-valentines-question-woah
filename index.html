@@ -12,13 +12,12 @@
     margin: 0;
     height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+    background: linear-gradient(135deg, #84C7D0, #84C7D0);
     overflow: hidden;
   }
 
   .container {
     position: relative;
-    z-index: 2;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -72,25 +71,6 @@
     font-weight: 600;
     margin-top: 20px;
   }
-
-  .floating-gif {
-    position: fixed;
-    pointer-events: none;
-    z-index: 1;
-    animation: floatUp 8s linear forwards;
-    opacity: 0.9;
-  }
-
-  @keyframes floatUp {
-    from {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-    to {
-      transform: translateY(-120vh) scale(1.4);
-      opacity: 0;
-    }
-  }
 </style>
 </head>
 
@@ -111,7 +91,7 @@
   <img class="main-gif"
        src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif">
   <div class="success-text">
-    WOOOOOO!!! I love you pookie!! ;))
+    WOOOOOO!!! I LOVE YOU BEBE!! MWUAH!!
   </div>
 </div>
 
@@ -123,18 +103,18 @@
     "Are you sure?",
     "What if I asked really nicely?",
     "Pretty please",
-    "With a chocolate rice cake on top",
-    "What about a matcha frostie",
-    "PLEASE POOKIE",
+    "Kahit may chocolate sweets?",
+    "What about a muichiro merch? WOAH",
+    "PLEASE BEBE HUHU",
     "But :*(",
-    "I am going to die",
-    "Yep im dead",
-    "ok ur talking to nathan's ghost",
-    "please babe",
-    ":((((",
+    "NOOOOOOOO",
+    "bebe don't do this to me :(((",
+    "Kinakausap mo na si Mikky",
+    "please bebe",
+    "kaluguran daka",
     "PRETTY PLEASE",
-    "Estoy muerto",
-    "No :("
+    "I CAN'T LIVE WITHOUT YOU",
+    "Dhaenyyyy :("
   ];
 
   const yesBtn = document.getElementById("yesBtn");
@@ -155,27 +135,6 @@
 
     noBtn.textContent = phrases[Math.min(noCount, phrases.length - 1)];
   });
-
-  const floatingGifs = [
-    "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif",
-    "https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif",
-    "https://media.tenor.com/qJ5evVs-_uUAAAAi/love-heart.gif"
-  ];
-
-  function spawnGif() {
-    const gif = document.createElement("img");
-    gif.src = floatingGifs[Math.floor(Math.random() * floatingGifs.length)];
-    gif.className = "floating-gif";
-
-    gif.style.left = Math.random() * 100 + "vw";
-    gif.style.bottom = "-100px";
-    gif.style.width = 50 + Math.random() * 50 + "px";
-
-    document.body.appendChild(gif);
-    setTimeout(() => gif.remove(), 8000);
-  }
-
-  setInterval(spawnGif, 900);
 </script>
 
 </body>
