@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine 💘</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #84C7D0, #84C7D0);
+    overflow: hidden;
+  }
+
+  .container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  img.main-gif {
+    height: 200px;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  button {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.2s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+  }
+
+  .yes {
+    background: #22c55e;
+  }
+
+  .no {
+    background: #ef4444;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .success-text {
+    font-size: 2.3rem;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+  <img class="main-gif"
+       src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif">
+  <h1>Will you be my Valentine?</h1>
+
+  <div class="buttons">
+    <button class="yes" id="yesBtn">Yes</button>
+    <button class="no" id="noBtn">No</button>
+  </div>
+</div>
+
+<div class="container hidden" id="success">
+  <img class="main-gif"
+       src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif">
+  <div class="success-text">
+    WOOOOOO!!! I LOVE YOU BEBE!! MWUAH!!
+  </div>
+</div>
+
+<script>
+  let noCount = 0;
+
+  const phrases = [
+    "No",
+    "Are you sure?",
+    "What if I asked really nicely?",
+    "Pretty please",
+    "Kahit may chocolate sweets?",
+    "What about a muichiro merch? WOAH",
+    "PLEASE BEBE HUHU",
+    "But :*(",
+    "NOOOOOOOO",
+    "bebe don't do this to me :(((",
+    "Kinakausap mo na si Mikky",
+    "please bebe",
+    "kaluguran daka",
+    "PRETTY PLEASE",
+    "I CAN'T LIVE WITHOUT YOU",
+    "Dhaenyyyy :("
+  ];
+
+  const yesBtn = document.getElementById("yesBtn");
+  const noBtn = document.getElementById("noBtn");
+  const main = document.getElementById("main");
+  const success = document.getElementById("success");
+
+  yesBtn.addEventListener("click", () => {
+    main.classList.add("hidden");
+    success.classList.remove("hidden");
+  });
+
+  noBtn.addEventListener("click", () => {
+    noCount++;
+
+    const newSize = noCount * 18 + 16;
+    yesBtn.style.fontSize = newSize + "px";
+
+    noBtn.textContent = phrases[Math.min(noCount, phrases.length - 1)];
+  });
+</script>
+
+</body>
+</html>
